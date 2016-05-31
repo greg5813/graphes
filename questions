@@ -1,0 +1,37 @@
+Q1
+
+Q2
+
+Q3
+
+Q4
+Chaque tâche s'éxecute l'une après l'autre, le temps total d'éxecution est donc égal à la somme des temps d'éxecution de chaque tâche. 
+Pour la même raison que précédemment, il suffit juste de respecter l'ordre défini par les dépendances entre les tâches, ce qui correspond aussi, d'après la question 1, aux dépendances du DAG.
+
+Q5
+a.
+A tout moment de l’algorithme, chaque nœud du graphe est dans un des trois possibles états :
+— non numéroté et avec certains de ses prédécesseurs non numérotés correspond à X
+— non numéroté et avec tous ses prédécesseurs numérotés correspond à Y
+— numéroté correspond à Z
+En effet, une fois que l'on a numéroté un sommet on l'ajoute à la liste Z.
+Si un sommet a tous ses prédécesseurs dans Z (donc numérotés) on l'ajoute dans Y.
+Le troisième état correspond donc à la liste X.
+
+On initialise l'algorithme avec la liste Y qui contient les sommets n'ayant pas de dépendances.
+Puis l'algorithme ajoute un sommet v dans cette liste uniquement lorsque tous les sommets dont il est directement dépendant (ses prédécesseurs) sont déjà numérotés. 
+La numérotation, qui est faite à partir de la liste Y, respecte donc l'ordre topologique ou ordre partiel défini par les dépendances du graphe.
+
+La numérotation se fait avec des nombres entiers, chaque sommet ayant un numéro unique et les entiers possédant un ordre total, l'ordre donné aux sommets est donc total.
+
+b.
+Toutes les actions, retirer, ajouter, numéroter sont en O(1) donc nous n'en tiendrons pas compte.
+Le code de la ligne 8 à la ligne 10 (bloc si) utilise la fonction prec qui a un coût de c.
+Ce bloc est inclus dans un bloucle qui parcours tous les sommets successeurs à un autre sommet c'est à dire qu'on parcours p arrêtes.
+La boucle est donc en O(m*c). Pour pouvoir parcourir ces arrêtes, il faut comme dit ci-dessus, calculer les successeurs, ce qui ajoute un coût de c.
+Donc l'intérieur de la boucle "tant que" est de complexité en O( c + m*c).
+Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O( n*(c + m*c)).
+
+Q6
+pile -> hauteur, plus precisement postfixe
+file -> largeur
