@@ -1,8 +1,39 @@
 Q1
+a.
+Chaque sommet représente une opération vertex-split sur un des sommets du maillage.
+
+b.
+(A REVOIR)
+Si on considère un noeud Vs qui est divisé en deux sommets Vs1 et Vs2, alors dans le DAG il y aura une dépendance évidente (OpVs -> OpVs1, OpVs2) entre le sommet représentant le vertex_split du noeud Vs et les sommets représentant les vertex_split pour les noeuds Vs1 et Vs2.
+De plus un noeud V1 doit être traité avant un noeud V2 uniquement si l'opération vertex-split de V1 crée une arrête connectée à V2.
 
 Q2
+a.
+On peut inclure le coût des communications en les modélisants par le poids affecté à chaque arrête.
+
+b.
+Pour la répartition de la charge dans les différentes parties, il faut que la somme des coûts de calcul d'une partie soit équivalente d'une partie à l'autre.
+Bien sûr il faut faire attention aux dépendances qui peuvent nuire au temps de calcul (attente d'un résultat).
+Les coûts de communications se présentent au niveau des dépendances entre les parties. 
+Un bon mapping va limiter les coûts de communications en rassemblant les tâches interdépendantes dans une même partie attribuée à une même ressource néanmmoins envoyer plusieurs fois des petits résultats peut coûter moins qu'envoyer une fois un résultat de grande taille.
+Il faut donc que chaque partie corresponde à un sous-graphe du graphe de dépendances pour limiter le volume des communicationse et que chaque partie contienne un nombre de noeud équivalent pour équilibrer la charge.
+
+c.
+(BONUS)
+( reprendre tp2 OpenMP)
 
 Q3
+a.
+Si un processeur commet une faute lors de l'exécution d'une tâche v il faut réexécuter toutes les tâches précédent la tâche v dans le graphe de dépendances.
+
+b.
+Si l'on sauvegarde les résultats de chaque tâche après exécution, il suffit de réexécuter la tâche ayant fauté. On obtient donc une moyenne de 1.
+
+c.
+(A REVOIR)
+
+d.
+(BONUS)
 
 Q4
 Chaque tâche s'éxecute l'une après l'autre, le temps total d'éxecution est donc égal à la somme des temps d'éxecution de chaque tâche. 
@@ -30,8 +61,43 @@ Le code de la ligne 8 à la ligne 10 (bloc si) utilise la fonction prec qui a un
 Ce bloc est inclus dans un bloucle qui parcours tous les sommets successeurs à un autre sommet c'est à dire qu'on parcours p arrêtes.
 La boucle est donc en O(m*c). Pour pouvoir parcourir ces arrêtes, il faut comme dit ci-dessus, calculer les successeurs, ce qui ajoute un coût de c.
 Donc l'intérieur de la boucle "tant que" est de complexité en O( c + m*c).
-Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O( n*(c + m*c)).
+Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O( n*(c + m*c)) = O( n*c*(m+1) ).
 
 Q6
-pile -> hauteur, plus precisement postfixe
-file -> largeur
+Le parcour induit par l'utilisation d'une pile est un parcours du graphe en hauteur que l'on peut assimiler au parcours postfixe sur un arbre.
+Le parcours induit par l'uitilisation d'une file est un parcours du graphe en largeur.
+
+Q7
+algo -> Félix
+
+Q8
+a.
+Le temps total d'exécution admet comme borne inférieure le nombre de noeud divisé par le nombre de ressource , n/r.
+Dans le cas où la borne est atteinte, chaque ressource est utilisée à chaque étape du calcul.
+
+b.
+Les ressources limitent le nombre de tâches effectuées à chaque étape, la taille des listes est donc bornée par le nombre de ressource.
+
+Q9
+(ALGO)
+
+Q10
+
+Q11
++ longue dépendance
+
+
+Q12
+(ALGO)
+
+Q13
+
+Q14
+
+Q15
+(ALGO)
+
+Q16
+
+Q17
+(BONUS)
