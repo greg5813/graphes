@@ -1,3 +1,5 @@
 # tous les fichiers temporaires
 .*.swp
 
+#les fichiers dot
+*.dot
