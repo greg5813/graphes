@@ -1,3 +1,5 @@
+open Graph.Pack.Digraph;;
+
 (* entrees: 
    - un DAG
    sorties:
@@ -37,14 +39,14 @@ let tri_topologique dag =
    - pas de contrainte mémoire (section 3)
    - vous n'utiliserez pas d'heuristique
    *)
-let rec ordonnanceur_aux lv_tp ll lc = 
+let rec ordonnanceur_aux r dag lv_tp ll lc = 
   match lv_tp with 
-  | [] -> ll@[[lc]]
-  | t::q -> if ((appartient (pred dag t) (flatten ll)) && ((length lc)<r)) then
-                ordonnanceur_aux q ll lc@[t]
+  | [] -> ll@[lc]
+  | t::q -> if ((appartient (pred dag t) (List.flatten ll)) && ((List.length lc)<r)) then
+                ordonnanceur_aux r dag q ll (lc@[t])
             else
-                ordonnanceur_aux q ll@[[lc]] [t];;
+                ordonnanceur_aux r dag q (ll@[lc]) [t];;
 
 let ordonnanceur_sans_heuristique r dag = 
   let lv_tp = tri_topologique dag in
-    ordonnanceur_aux lv_tp [] [];;
+    ordonnanceur_aux r dag lv_tp [] [];;
