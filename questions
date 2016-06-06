@@ -62,6 +62,7 @@ Ce bloc est inclus dans un bloucle qui parcours tous les sommets successeurs à 
 La boucle est donc en O(m*c). Pour pouvoir parcourir ces arrêtes, il faut comme dit ci-dessus, calculer les successeurs, ce qui ajoute un coût de c.
 Donc l'intérieur de la boucle "tant que" est de complexité en O( c + m*c).
 Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O( n*(c + m*c)) = O( n*c*(m+1) ).
+!!!!!!!! A REVOIR
 
 Q6
 Le parcour induit par l'utilisation d'une pile est un parcours du graphe en hauteur que l'on peut assimiler au parcours postfixe sur un arbre.
@@ -79,25 +80,44 @@ b.
 Les ressources limitent le nombre de tâches effectuées à chaque étape, la taille des listes est donc bornée par le nombre de ressource.
 
 Q9
-(ALGO) Greg -> to be tested
+(ALGO) Greg -> FINI
 
 Q10
+On remarque que lorsque le graphe de dépendances est équilibré comme le DAG dag3, le nombre de ressources influe peu sur l'efficacité de l'algorithme.
+On se rapproche en effet toujours de la borne inf n/r étapes de calcul car il y a toujours un nombre équivalent de tâches à exécuter quelque soit l'ordre d'exécution des tâches.
+
+Pour les DAG de la forme de dag2, si r>1 comme il n'y a qu'une tâche source et que les degrès sortant sont inférieurs ou égale à 3, le nombres de tâches exécutables à chaque étape est 1 ou 2.
+L'efficacité est donc mauvaise mais on ne peut faire mieux au vu du graphe.
+L'algorithme à donc peu d'effet sur les graphes de cette forme.
+
+Pour les DAG de forme plus quelconque comme dag1, le graphe étant assez équilibré on obtient des performances plus ou moins proche de la borne inf en fonction des dépendances et du nombre de ressources.
+
+Pour des DAG de la forme de dag4, l'algorithme n'est pas efficace car il exécute toute les tâches du deuxième niveau de dépendances avant de passer au troisième alors même qu'il y a des taĉhes exécutables ce qui va donc donner un grand nombre d'étapes.
+Celui-ci pourrait être réduit en organisant les taĉhes différemment (cf question 11). 
 
 Q11
-+ longue dépendance
+Comme vu à la question précédente, notre algorithme est inefficace lorsqu'il y a un sous-graphe présentant un grand nombre d'enchainement de dépendances.
+Pour cela, il faut exécuter en priorité les tâches ayant le plus grand nombre de dépendances jusqu'à un de leur puit.
+Plutôt que d'utiliser une file pour la liste Y dans notre tri, nous utiliserons simplement une liste triée en fonction de ce nombre, l'ordre topologique partiel étant respecté par la structure de l'algorithme de la question 7.
 
 
 Q12
-(ALGO)
+(ALGO) -> FELIX
 
 Q13
 
 Q14
+Il suffit qu'une tâche ne demande pas plus de mémoire mi que de mémoire totale M.
+On a donc (C) : pour tout i, mi <= M
 
 Q15
-(ALGO)
+(ALGO) -> GREG + (QUESTIONS)
+
 
 Q16
+a.
+b.
+c. (BONUS)
 
 Q17
 (BONUS)

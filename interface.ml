@@ -1,4 +1,4 @@
-open Graph.Pack.Digraph;;
+
 (* print_sommets v list -> label list *)
 let rec print_sommets l =
   match l with
