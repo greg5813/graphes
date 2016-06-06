@@ -1,3 +1,4 @@
+open Graph.Pack.Digraph;;
 (* print_sommets v list -> label list *)
 let rec print_sommets l =
   match l with
@@ -21,6 +22,7 @@ let rec appartient_aux x l =
     match l with
     | [] -> false
     | t::q -> (t==x) || appartient_aux x q;;
+
 let rec appartient l1 l2 =
     match l1 with
     | [] -> true
@@ -38,5 +40,24 @@ let tri_topologique dag =
     tri_aux dag y z;;
 
  
+(* entrees: 
+   - un nombre entier de ressources r
+   - un DAG
+   sorties:
+   - une trace d'execution du DAG 
+   specifs: 
+   - le DAG est suppose non pondere
+   - pas de contrainte mémoire (section 3)
+   - vous n'utiliserez pas d'heuristique
+   *)
+let rec ordonnanceur_aux r dag lv_tp ll lc = 
+  match lv_tp with 
+  | [] -> ll@[lc]
+  | t::q -> if ((appartient (pred dag t) (List.flatten ll)) && ((List.length lc)<r)) then
+                ordonnanceur_aux r dag q ll (lc@[t])
+            else
+                ordonnanceur_aux r dag q (ll@[lc]) [t];;
 
-
+let ordonnanceur_sans_heuristique r dag = 
+  let lv_tp = tri_topologique dag in
+    ordonnanceur_aux r dag lv_tp [] [];;
