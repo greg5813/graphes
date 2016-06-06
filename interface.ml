@@ -1,3 +1,15 @@
+(* print_sommets v list -> label list *)
+let rec print_sommets l =
+  match l with
+  | [] -> []
+  | t::q -> (V.label t)::(print_sommets q);;
+
+(* affiche la trace *)
+let rec print_trace trace =
+    match trace with
+    | [] -> []
+    | t::q -> (print_sommets t)::(print_trace q);;
+
 (* entrees: 
    - un DAG
    sorties:
