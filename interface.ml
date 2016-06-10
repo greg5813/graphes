@@ -11,6 +11,8 @@ let rec print_trace trace =
     | [] -> []
     | t::q -> (print_sommets t)::(print_trace q);;
 
+let print_marquage dag = fold_vertex (fun v l -> (Mark.get v, V.label v)::l) dag [];;
+
 (* entrees: 
    - un DAG
    sorties:
@@ -61,3 +63,51 @@ let rec ordonnanceur_aux r dag lv_tp ll lc =
 let ordonnanceur_sans_heuristique r dag = 
   let lv_tp = tri_topologique dag in
     ordonnanceur_aux r dag lv_tp [] [];;
+
+
+let rec inserer_trie x l =
+  match l with
+  | [] -> [x]
+  | t::q -> if ((Mark.get t) < (Mark.get x))
+	    then x::l
+            else t::(inserer_trie x q);;
+
+let rec extraction dag l l_exec l_res =
+    match l with
+    | [] -> l_res
+    | t::q -> if(appartient (pred dag t) (List.flatten l_exec))
+              then extraction dag q l_exec (inserer_trie t l_res)
+              else l_res;;
+
+let rec retirer_aux x l =
+    match l with
+    | [] -> []
+    | t::q -> if (t=x) then q else t::(retirer_aux x q);;
+
+let rec retirer l1 l2 =
+    match l1 with 
+    | [] -> l2
+    | t1::q1 -> retirer q1 (retirer_aux t1 l2);;
+
+
+
+let maxi_marquage dag vertex = fold_succ (fun v maxi -> max (Mark.get v) maxi) dag vertex 0;;
+
+let rec marquage_aux dag l1 l2 =
+    let m = ref 0 in 
+    match l1 with
+    | [] -> ()
+    | t::q -> begin
+                m:=maxi_marquage dag t;
+		Mark.set t (!m+1);
+                marquage_aux dag (fold_pred (fun v laux -> if( appartient (succ dag v) (l2@[t]))
+						    then (laux@[v]) 
+                                                    else laux) dag t q) (l2@[t])
+              end;; 
+let marquage dag =
+    Mark.clear dag;
+    let puits = fold_vertex (fun v l -> if ( (out_degree dag v)==0) 
+				     then l@[v] else l) dag [] in
+    marquage_aux dag puits [];;
+    
+

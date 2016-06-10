@@ -98,7 +98,7 @@ Celui-ci pourrait être réduit en organisant les taĉhes différemment (cf ques
 Q11
 Comme vu à la question précédente, notre algorithme est inefficace lorsqu'il y a un sous-graphe présentant un grand nombre d'enchainement de dépendances.
 Pour cela, il faut exécuter en priorité les tâches ayant le plus grand nombre de dépendances jusqu'à un de leur puit.
-Plutôt que d'utiliser une file pour la liste Y dans notre tri, nous utiliserons simplement une liste triée en fonction de ce nombre, l'ordre topologique partiel étant respecté par la structure de l'algorithme de la question 7.
+Plutôt que d'utiliser une file pour la liste Y dans notre tri, nous utiliserons simplement une liste triée en fonction de ce nombre, l'ordre topologique partiel étant respecté par la structure de l'algorithme de la question 7. (A REPRENDRE)
 
 
 Q12
