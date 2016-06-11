@@ -102,9 +102,12 @@ Plutôt que d'utiliser une file pour la liste Y dans notre tri, nous utiliserons
 
 
 Q12
-(ALGO) -> FELIX
+(ALGO) -> FELIX -> FINI
 
 Q13
+Pour les dag1, dag2 et dag3 l'heuristique ne change pas grand chose quant au nombre d'étapes d'exécution pour les mêmes raisons qu'énoncées à la question 10 mais change l'ordre d'exécution des tâches.
+Pour le dag4, on obtiens une amélioration d'environ 2 étapes de calculs grâce à l'heuristique.
+En effet, au lieu d'exécuter toutes les tâches de la branche la plus longue une par une après avoir exécuté toutes celles débloquées par le noeud g (en respect avec l'ordre topologique), notre heuristique permet de compléter les étapes avec les tâches disponibles issues du noeud g.
 
 Q14
 Il suffit qu'une tâche ne demande pas plus de mémoire mi que de mémoire totale M.
