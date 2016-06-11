@@ -52,17 +52,17 @@ let tri_topologique dag =
    - pas de contrainte mémoire (section 3)
    - vous n'utiliserez pas d'heuristique
    *)
-let rec ordonnanceur_aux r dag lv_tp ll lc = 
+let rec ordonnanceur_sans_heuristique_aux r dag lv_tp ll lc = 
   match lv_tp with 
   | [] -> ll@[lc]
   | t::q -> if ((appartient (pred dag t) (List.flatten ll)) && ((List.length lc)<r)) then
-                ordonnanceur_aux r dag q ll (lc@[t])
+                ordonnanceur_sans_heuristique_aux r dag q ll (lc@[t])
             else
-                ordonnanceur_aux r dag q (ll@[lc]) [t];;
+                ordonnanceur_sans_heuristique_aux r dag q (ll@[lc]) [t];;
 
 let ordonnanceur_sans_heuristique r dag = 
   let lv_tp = tri_topologique dag in
-    ordonnanceur_aux r dag lv_tp [] [];;
+    ordonnanceur_sans_heuristique_aux r dag lv_tp [] [];;
 
 
 let rec inserer_trie x l =
@@ -110,4 +110,17 @@ let marquage dag =
 				     then l@[v] else l) dag [] in
     marquage_aux dag puits [];;
     
+
+let rec ordonnanceur_contrainte_memoire_aux r dag lv_tp ll lc = 
+  match lv_tp with 
+  | [] -> ll@[lc]
+  | t::q -> if ((appartient (pred dag t) (List.flatten ll)) && ((List.length lc)<r)) then
+                ordonnanceur_contrainte_memoire_aux r dag q ll (lc@[t])
+            else
+                ordonnanceur_contrainte_memoire_aux r dag q (ll@[lc]) [t];;
+
+let ordonnanceur_contrainte_memoire r dag = 
+  let lv_tp = tri_topologique dag in
+    ordonnanceur_contrainte_memoire_    aux r dag lv_tp [] [];;
+
 
