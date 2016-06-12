@@ -1,4 +1,4 @@
-print_endline "ordonnanceur avec heuristique";
+print_endline "ordonnanceur sans heuristique";
 print_newline();
 for i=1 to 5 do 
 	print_string "  dag1 r=";
@@ -77,7 +77,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire i j dag1));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire i j dag1))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
@@ -90,7 +93,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire i j dag2));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire i j dag2))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
@@ -103,7 +109,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire i j dag3));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire i j dag3))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
@@ -116,7 +125,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire i j dag4));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire i j dag4))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
@@ -132,7 +144,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag1));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag1))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
@@ -145,7 +160,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag2));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag2))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
@@ -158,7 +176,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag3));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag3))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
@@ -171,7 +192,10 @@ for j=1 to 5 do
 		print_string " r=";
 		print_int i;
 		print_string " t=";
-		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag4));
+		try 
+			print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag4))
+		with
+			MemoireInsuffisante m -> print_string "Mémoire insuffisante : "; print_int m;
 		print_newline()
 	done;
 	print_newline()
