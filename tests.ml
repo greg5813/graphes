@@ -187,7 +187,7 @@ for j=1 to 5 do
 		print_int i;
 		print_string " t=";
 		try 
-			print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag2));
+			print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag3));
 			print_newline();
 		with
 			Failure s -> print_string s;
