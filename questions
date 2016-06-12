@@ -67,13 +67,12 @@ La numérotation se fait avec des nombres entiers, chaque sommet ayant un numér
 
 b.
 Toutes les actions, retirer, ajouter, numéroter sont en O(1) donc nous n'en tiendrons pas compte.
-Le code de la ligne 8 à la ligne 10 (bloc si) utilise la fonction prec qui a un coût de c.
-Ce bloc est inclus dans un bloucle qui parcours tous les sommets successeurs à un autre sommet c'est à dire qu'on parcours p arrêtes.
-La boucle est donc en O(m*c). Pour pouvoir parcourir ces arrêtes, il faut comme dit ci-dessus, calculer les successeurs, ce qui ajoute un coût de c.
-Donc l'intérieur de la boucle "tant que" est de complexité en O( c + m*c).
-Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O( n*(c + m*c)) = O( n*c*(m+1) ).
-
-!!!!!!!! (A REVOIR)
+Le code de la ligne 8 à la ligne 10 (bloc si) utilise la fonction prec, qui a un coût de c, pour construire une liste, qui est en O(m), sur laquelle il itère pour vérifier une inclusion, qui est en O(n).
+Ce bloc a donc une complexité en O(c+m*n).
+Il est inclus dans un bloucle qui parcours tous les sommets successeurs à un autre sommet.
+Il faut donc de nouveau calculer les successeurs (c) et itérer sur cette liste (O(m)).
+Donc l'intérieur de cette boucle "tant que" est de complexité en O(c+m*(c+m*n)).
+Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O(n*(c+m*(c+m*n))) = O(n^2*m^2 + n*m*c + n*c).
 
 Q6
 Le parcour induit par l'utilisation d'une pile est un parcours du graphe en hauteur que l'on peut assimiler au parcours postfixe sur un arbre.
@@ -96,15 +95,17 @@ Q9
 Q10
 On remarque que lorsque le graphe de dépendances est équilibré comme le DAG dag3, le nombre de ressources influe peu sur l'efficacité de l'algorithme.
 On se rapproche en effet toujours de la borne inf n/r étapes de calcul pour r<=5 car il y a toujours un grand nombre de tâches à exécuter à chaque étape quelque soit l'ordre d'exécution des tâches.
-Pour r>5, on atteint le palier du nombre de tâches exécutables par étape.
+Pour r>=5, on atteint le palier du nombre de tâches exécutables par étape.
 
 Pour les DAG de la forme de dag2, si r>1 comme il n'y a qu'une tâche source et que les degrès sortant sont inférieurs ou égale à 2, le nombres de tâches exécutables à chaque étape est 1 ou 2.
 L'efficacité est donc mauvaise mais on ne peut faire mieux au vu du graphe.
-L'algorithme à donc peu d'effet sur les graphes de cette forme.
+L'algorithme n'a donc aucun effet sur les graphes de cette forme.
 
 Pour les DAG de forme plus quelconque comme dag1, le graphe étant assez équilibré (forme entre dag2 et dag3) on obtient des performances plus ou moins proche de la borne inf en fonction des dépendances et du nombre de sources.
+Ici on atteint la borne inf pour r<=3 puis un palier ensuite.
 
 Pour des DAG de la forme de dag4, l'algorithme n'est pas efficace car il exécute toute les tâches du deuxième niveau de dépendances (b et celles issues de g) avant de passer au suivant, ce qui va donc donner un grand nombre d'étapes (exécution de la branche de gauche avec une tâche par étape).
+On obtiens ainsi 15 étapes pour r=2, 13 pour r=3 et un palier à 12 pour r>=4.
 Celui-ci pourrait être réduit en organisant les taĉhes différemment (cf question 11). 
 
 Q11
@@ -114,13 +115,12 @@ Pour cela, il faut exécuter les tâches selon la longeur décroissante des chem
 On commence donc par marquer les tâches avec la longeur maximale des chemins de la tâche aux puits du DAG.
 Puis à chaque étape, on récupère les tâches exécutables selon l'ordre topologique, triées par ordre décroissant selon le marquage et on exécute les r premières avec r le nombre de ressources.
 
-
 Q12
 (ALGO) -> FELIX -> FINI
 
 Q13
-Pour les dag1, dag2 et dag3 l'heuristique ne change pas grand chose quant au nombre d'étapes d'exécution pour les mêmes raisons qu'énoncées à la question 10 mais change l'ordre d'exécution des tâches.
-Pour le dag4, on obtiens une amélioration d'environ 2 étapes de calculs grâce à l'heuristique.
+Pour les dag1, dag2 et dag3 l'heuristique ne change rien quant au nombre d'étapes d'exécution pour les mêmes raisons qu'énoncées à la question 10 mais change l'ordre d'exécution des tâches.
+Pour le dag4, on obtiens une amélioration siginificative grâce à l'heuristique puisque l'on atteint le palier de 11 étapes dès r=2.
 En effet, au lieu d'exécuter toutes les tâches de la branche la plus longue une par une après avoir exécuté toutes celles débloquées par le noeud g (en respect avec l'ordre topologique), notre heuristique permet de compléter les étapes avec les tâches disponibles issues du noeud g.
 L'exécution devient optimale.
 
@@ -133,15 +133,17 @@ Q15
 
 On remarque que globalement le nombre d'étapes est plus grand car on peut exécuter moins de tâches par étapes puisque l'on ajoute une contrainte.
 
-Pour les dag1, dag2 et dag3, l'heuristique ne change pas grand chose puisque toutes les tâches ont besoin d'une unité de mémoire.
-Le nombre de ressources et de mémoire jouent donc un rôle symétrique, l'exécution est donc la même que lorsque qu'il n'y a pas de contraintes mais avec un nombre de ressources égale à min(r,m).
+Pour les dag1, dag2 et dag3, l'heuristique ne change rien à l'exécution proprement dite puisque toutes les tâches ont besoin d'une unité de mémoire.
+Le nombre de ressources et de mémoire jouant donc un rôle symétrique, l'exécution est donc la même que lorsque qu'il n'y a pas de contrainte mémoire mais avec un nombre de ressources égale à min(r,m).
 
 Pour dag4 en revanche, si on prend r=2 et m=3, a et g ne seront pas exécutables en une étape et l'algorithme avec l'heuristique précédente exécutera quasimement tout la branche de gauche avant d'exécuter g.
 Il en resulte encore un grand nombre d'étapes alors que les taches issues de g sont exécutables en même temps que celles de la branche de gauche avec la configuration actuelle.
-
+On obtiens ainsi un palier à 15 étapes pour m=3 alors que l'optimal est de 12 étapes.
 
 Q16
 a.
+
+
 b.
 La priorité P1 implique que l'on exécute d'abord les tâches a1 à an-2, puis c, puis an-1 b1, puis b2 b3 b4 à bn-4 bn-2 bn-1, puis bn et enfin d.
 On obtiens donc un temps d'exécution pour r=2 et m=3 égale à T = N+2+[(N-1)/3].
@@ -150,10 +152,17 @@ Soit la priorité P2 qui implique l'exécution suivante: a1, puis c, a2 b1 à an
 On obtiens alors un temps d'exécution de N+3 qui est donc meilleur que celui de P1 pour N>4.
 
 c.
-En s'inspirant de la priorité P2, on déduit qu'une heuristique plus adaptée consiste à trier les tâches à exécuter selon le nombre de tâches qui dépendent de son exécution (sous-graphe) et non pas la longeur des chemins jusqu'à un puit.
+En s'inspirant de la priorité P2, on déduit qu'une heuristique plus adaptée consiste à trier les tâches à exécuter selon le nombre décroissant de tâches qui dépendent de son exécution (sous-graphe) et non pas la longeur la plus grande des chemins de la tâche à un puit.
 
 Q17
 (BONUS) algo + (QUESTIONS)
 
-Pour les dag1, dag2 et dag3 l'heuristique ne change pas grand chose quant au nombre d'étapes d'exécution pour les mêmes raisons qu'énoncées à la question 10 mais change l'ordre d'exécution des tâches.
+Pour les dag1 et dag2 l'heuristique ne change rien quant au nombre d'étapes d'exécution pour les mêmes raisons qu'énoncées à la question 10 mais change l'ordre d'exécution des tâches.
+
+Pour le dag3 qui est équilibré, la nouvelle heuristique est moins bonne que la précédente puisque pour m=3 le palier comporte une étape de plus.
+En effet, pour de tels graphes, il vaut mieux exécuter toutes les tâches d'une même niveau de dépendance plutôt que d'anticiper.
+
 Pour dag4 en revanche, on retrouve une exécution semblable à celle de la question 13 qui est optimale pour cette forme de DAG.
+On a en effet un palier à 12 étapes d'exécution dès r=2 pour m=3.
+
+
