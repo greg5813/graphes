@@ -1,43 +1,53 @@
 Q1
 a.
-Chaque sommet représente une opération vertex-split sur un des sommets du maillage.
+Chaque noeud du DAG représente une opération vertex-split sur l'un des sommets du maillage.
+Remarque : pour la réponse suivante, on parlera de sommet pour la figure et de noeud pour le DAG.
 
 b.
-(A REVOIR)
-Si on considère un noeud Vs qui est divisé en deux sommets Vs1 et Vs2, alors dans le DAG il y aura une dépendance évidente (OpVs -> OpVs1, OpVs2) entre le sommet représentant le vertex_split du noeud Vs et les sommets représentant les vertex_split pour les noeuds Vs1 et Vs2.
-De plus un noeud V1 doit être traité avant un noeud V2 uniquement si l'opération vertex-split de V1 crée une arrête connectée à V2.
+Si on considère un sommet S qui est divisé en deux sommets S1 et S2, alors dans le DAG il y aura une dépendance évidente (VS -> VS1, VS2) entre le noeud représentant le vertex_split du sommet S et les noeuds représentant les vertex_split des sommets S1 et S2.
+De plus un noeud V1 sur un sommet S1 doit être traité avant un noeud V2 sur un sommet S2 si l'opération V1 a dans l'ensemble des sommets voisins le sommet S2 et réciproquement.
+Bien sûr, les deux propriétés ne peuvent êtres vraies en même temps sinon aucune des opérations n'est faisable et si les deux sont fausses alors l'ordre n'a pas d'importance.
 
 Q2
 a.
-On peut inclure le coût des communications en les modélisants par le poids affecté à chaque arrête.
+On peut inclure le coût des communications en les modélisant par les poids affectés à chaque arrête.
 
 b.
-Pour la répartition de la charge dans les différentes parties, il faut que la somme des coûts de calcul d'une partie soit équivalente d'une partie à l'autre.
-Bien sûr il faut faire attention aux dépendances qui peuvent nuire au temps de calcul (attente d'un résultat).
-Les coûts de communications se présentent au niveau des dépendances entre les parties. 
-Un bon mapping va limiter les coûts de communications en rassemblant les tâches interdépendantes dans une même partie attribuée à une même ressource néanmmoins envoyer plusieurs fois des petits résultats peut coûter moins qu'envoyer une fois un résultat de grande taille.
-Il faut donc que chaque partie corresponde à un sous-graphe du graphe de dépendances pour limiter le volume des communicationse et que chaque partie contienne un nombre de noeud équivalent pour équilibrer la charge.
+Pour la répartition de la charge entre les différentes ressources, il faut que la somme des coûts de calcul des tâches d'une ressource soit équivalente d'une ressource à l'autre.
+Les coûts de communication se présentent eux au niveau des dépendances (arcs) entre les parties. 
+
+Un bon mapping va limiter les coûts de communication en attribuant les tâches interdépendantes à une même ressource donc en les rassemblant dans une même partie.
+Bien sûr il faut faire attention aux dépendances qui peuvent nuire au temps de calcul (attente d'un résultat d'une tâche précédente, potentiellement située dans une autre partie).
+De plus envoyer plusieurs fois des petits résultats peut coûter moins cher en coût de communication qu'envoyer une seule fois un résultat de grande taille.
+On considère donc que le coûts de communication ne sont pas trop disparates, que les tâches représentent une charge équivalente et on ne fera pas attention à l'attente d'un résulat.
+
+Sous ces hypothèses, chaque partie correspond à une composante connexe du graphe non orienté équivalent au DAG pour limiter le volume des communications et elles contiennent un nombre de noeuds équivalent pour équilibrer la charge.
 
 c.
-(BONUS)
-( reprendre tp2 OpenMP)
+On découpe récursivement l'arbre de la manière suivante, on crée deux parties, une correspondant au sous-arbre gauche et l'autre à la racine et au sous-arbre droit.
+On effectue donc cela sqrt(r) fois pour former les r parties. Remarque, il faut que sqrt(r)<p.
+On obtient ainsi (r-1) communications (entre la racine et le sous-arbre gauche de chaque noeud divisé), ce qui est la borne inf pour r parties dans un graphe connexe.
 
 Q3
 a.
-Si un processeur commet une faute lors de l'exécution d'une tâche v il faut réexécuter toutes les tâches précédent la tâche v dans le graphe de dépendances.
+Si un processeur commet une faute lors de l'exécution d'une tâche v il faut réexécuter toutes les tâches précédent la tâche v dans le DAG.
 
 b.
 Si l'on sauvegarde les résultats de chaque tâche après exécution, il suffit de réexécuter la tâche ayant fauté. On obtient donc une moyenne de 1.
 
 c.
-(A REVOIR)
+La complexité de l'algortihme de force brute est égale au nombre de possibilités d'ensembles de tâches sauvegardées différents fois le coût de calcul de mu.
+On sauvegarde le résutat de s tâches parmis n, on a donc s parmis n ensembles différents possibles.
+mu est la moyenne du nombre de tâches à réexécuter, sachant que l'on doit réexécuter les tâches précédentes les (n-s) tâches non sauvegardées.
+La complexité de la recherche des tâches précédentes est en O(m).
+L'algorithme de force brute est donc de complexité O((s parmis n)*(n-s)*m).
 
 d.
 (BONUS)
 
 Q4
-Chaque tâche s'éxecute l'une après l'autre, le temps total d'éxecution est donc égal à la somme des temps d'éxecution de chaque tâche. 
-Pour la même raison que précédemment, il suffit juste de respecter l'ordre défini par les dépendances entre les tâches, ce qui correspond aussi, d'après la question 1, aux dépendances du DAG.
+Chaque tâche s'éxecute l'une après l'autre, le temps total d'éxecution est donc égal à la somme des temps d'éxecution de chaque tâche (autant d'étapes que de tâches). 
+Il suffit juste d'exécuter les tâches en respectant l'ordre défini par les dépendances dans le DAG.
 
 Q5
 a.
@@ -57,23 +67,23 @@ La numérotation se fait avec des nombres entiers, chaque sommet ayant un numér
 
 b.
 Toutes les actions, retirer, ajouter, numéroter sont en O(1) donc nous n'en tiendrons pas compte.
-Le code de la ligne 8 à la ligne 10 (bloc si) utilise la fonction prec qui a un coût de c.
-Ce bloc est inclus dans un bloucle qui parcours tous les sommets successeurs à un autre sommet c'est à dire qu'on parcours p arrêtes.
-La boucle est donc en O(m*c). Pour pouvoir parcourir ces arrêtes, il faut comme dit ci-dessus, calculer les successeurs, ce qui ajoute un coût de c.
-Donc l'intérieur de la boucle "tant que" est de complexité en O( c + m*c).
-Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O( n*(c + m*c)) = O( n*c*(m+1) ).
-!!!!!!!! A REVOIR
+Le code de la ligne 8 à la ligne 10 (bloc si) utilise la fonction prec, qui a un coût de c, pour construire une liste, qui est en O(m), sur laquelle il itère pour vérifier une inclusion, qui est en O(n).
+Ce bloc a donc une complexité en O(c+m*n).
+Il est inclus dans un bloucle qui parcours tous les sommets successeurs à un autre sommet.
+Il faut donc de nouveau calculer les successeurs (c) et itérer sur cette liste (O(m)).
+Donc l'intérieur de cette boucle "tant que" est de complexité en O(c+m*(c+m*n)).
+Tous les sommets du graphe seront ajoutés à la liste Y, que l'on parcours entièrement (ligne 3), donc on obtient une complexité de l'algorithme en O(n*(c+m*(c+m*n))) = O(n^2*m^2 + n*m*c + n*c).
 
 Q6
 Le parcour induit par l'utilisation d'une pile est un parcours du graphe en hauteur que l'on peut assimiler au parcours postfixe sur un arbre.
-Le parcours induit par l'uitilisation d'une file est un parcours du graphe en largeur.
+Le parcours induit par l'utilisation d'une file est un parcours du graphe en largeur.
 
 Q7
 algo -> Félix -> FINI
 
 Q8
 a.
-Le temps total d'exécution admet comme borne inférieure le nombre de noeud divisé par le nombre de ressource , n/r.
+Le temps total d'exécution admet comme borne inférieure le nombre de noeud divisé par le nombre de ressource, n/r.
 Dans le cas où la borne est atteinte, chaque ressource est utilisée à chaque étape du calcul.
 
 b.
@@ -84,27 +94,35 @@ Q9
 
 Q10
 On remarque que lorsque le graphe de dépendances est équilibré comme le DAG dag3, le nombre de ressources influe peu sur l'efficacité de l'algorithme.
-On se rapproche en effet toujours de la borne inf n/r étapes de calcul car il y a toujours un nombre équivalent de tâches à exécuter quelque soit l'ordre d'exécution des tâches.
+On se rapproche en effet toujours de la borne inf n/r étapes de calcul pour r<=5 car il y a toujours un grand nombre de tâches à exécuter à chaque étape quelque soit l'ordre d'exécution des tâches.
+Pour r>=5, on atteint le palier du nombre de tâches exécutables par étape.
 
-Pour les DAG de la forme de dag2, si r>1 comme il n'y a qu'une tâche source et que les degrès sortant sont inférieurs ou égale à 3, le nombres de tâches exécutables à chaque étape est 1 ou 2.
+Pour les DAG de la forme de dag2, si r>1 comme il n'y a qu'une tâche source et que les degrès sortant sont inférieurs ou égale à 2, le nombres de tâches exécutables à chaque étape est 1 ou 2.
 L'efficacité est donc mauvaise mais on ne peut faire mieux au vu du graphe.
-L'algorithme à donc peu d'effet sur les graphes de cette forme.
+L'algorithme n'a donc aucun effet sur les graphes de cette forme.
 
-Pour les DAG de forme plus quelconque comme dag1, le graphe étant assez équilibré on obtient des performances plus ou moins proche de la borne inf en fonction des dépendances et du nombre de ressources.
+Pour les DAG de forme plus quelconque comme dag1, le graphe étant assez équilibré (forme entre dag2 et dag3) on obtient des performances plus ou moins proche de la borne inf en fonction des dépendances et du nombre de sources.
+Ici on atteint la borne inf pour r<=3 puis un palier ensuite.
 
-Pour des DAG de la forme de dag4, l'algorithme n'est pas efficace car il exécute toute les tâches du deuxième niveau de dépendances avant de passer au troisième alors même qu'il y a des taĉhes exécutables ce qui va donc donner un grand nombre d'étapes.
+Pour des DAG de la forme de dag4, l'algorithme n'est pas efficace car il exécute toute les tâches du deuxième niveau de dépendances (b et celles issues de g) avant de passer au suivant, ce qui va donc donner un grand nombre d'étapes (exécution de la branche de gauche avec une tâche par étape).
+On obtiens ainsi 15 étapes pour r=2, 13 pour r=3 et un palier à 12 pour r>=4.
 Celui-ci pourrait être réduit en organisant les taĉhes différemment (cf question 11). 
 
 Q11
-Comme vu à la question précédente, notre algorithme est inefficace lorsqu'il y a un sous-graphe présentant un grand nombre d'enchainement de dépendances.
-Pour cela, il faut exécuter en priorité les tâches ayant le plus grand nombre de dépendances jusqu'à un de leur puit.
-Plutôt que d'utiliser une file pour la liste Y dans notre tri, nous utiliserons simplement une liste triée en fonction de ce nombre, l'ordre topologique partiel étant respecté par la structure de l'algorithme de la question 7. (A REPRENDRE)
+Comme vu à la question précédente, notre algorithme est inefficace lorsqu'il y a un sous-graphe présentant un long chemin entre deux sommets.
+Pour cela, il faut exécuter les tâches selon la longeur décroissante des chemins de la tâche jusqu'à un puit.
 
+On commence donc par marquer les tâches avec la longeur maximale des chemins de la tâche aux puits du DAG.
+Puis à chaque étape, on récupère les tâches exécutables selon l'ordre topologique, triées par ordre décroissant selon le marquage et on exécute les r premières avec r le nombre de ressources.
 
 Q12
-(ALGO) -> FELIX
+(ALGO) -> FELIX -> FINI
 
 Q13
+Pour les dag1, dag2 et dag3 l'heuristique ne change rien quant au nombre d'étapes d'exécution pour les mêmes raisons qu'énoncées à la question 10 mais change l'ordre d'exécution des tâches.
+Pour le dag4, on obtiens une amélioration siginificative grâce à l'heuristique puisque l'on atteint le palier de 11 étapes dès r=2.
+En effet, au lieu d'exécuter toutes les tâches de la branche la plus longue une par une après avoir exécuté toutes celles débloquées par le noeud g (en respect avec l'ordre topologique), notre heuristique permet de compléter les étapes avec les tâches disponibles issues du noeud g.
+L'exécution devient optimale.
 
 Q14
 Il suffit qu'une tâche ne demande pas plus de mémoire mi que de mémoire totale M.
@@ -113,11 +131,38 @@ On a donc (C) : pour tout i, mi <= M
 Q15
 (ALGO) -> GREG + (QUESTIONS)
 
+On remarque que globalement le nombre d'étapes est plus grand car on peut exécuter moins de tâches par étapes puisque l'on ajoute une contrainte.
+
+Pour les dag1, dag2 et dag3, l'heuristique ne change rien à l'exécution proprement dite puisque toutes les tâches ont besoin d'une unité de mémoire.
+Le nombre de ressources et de mémoire jouant donc un rôle symétrique, l'exécution est donc la même que lorsque qu'il n'y a pas de contrainte mémoire mais avec un nombre de ressources égale à min(r,m).
+
+Pour dag4 en revanche, si on prend r=2 et m=3, a et g ne seront pas exécutables en une étape et l'algorithme avec l'heuristique précédente exécutera quasimement tout la branche de gauche avant d'exécuter g.
+Il en resulte encore un grand nombre d'étapes alors que les taches issues de g sont exécutables en même temps que celles de la branche de gauche avec la configuration actuelle.
+On obtiens ainsi un palier à 15 étapes pour m=3 alors que l'optimal est de 12 étapes.
 
 Q16
 a.
+
+
 b.
-c. (BONUS)
+La priorité P1 implique que l'on exécute d'abord les tâches a1 à an-2, puis c, puis an-1 b1, puis b2 b3 b4 à bn-4 bn-2 bn-1, puis bn et enfin d.
+On obtiens donc un temps d'exécution pour r=2 et m=3 égale à T = N+2+[(N-1)/3].
+
+Soit la priorité P2 qui implique l'exécution suivante: a1, puis c, a2 b1 à an bn-1, puis bn et enfin d.
+On obtiens alors un temps d'exécution de N+3 qui est donc meilleur que celui de P1 pour N>4.
+
+c.
+En s'inspirant de la priorité P2, on déduit qu'une heuristique plus adaptée consiste à trier les tâches à exécuter selon le nombre décroissant de tâches qui dépendent de son exécution (sous-graphe) et non pas la longeur la plus grande des chemins de la tâche à un puit.
 
 Q17
-(BONUS)
+(BONUS) algo + (QUESTIONS)
+
+Pour les dag1 et dag2 l'heuristique ne change rien quant au nombre d'étapes d'exécution pour les mêmes raisons qu'énoncées à la question 10 mais change l'ordre d'exécution des tâches.
+
+Pour le dag3 qui est équilibré, la nouvelle heuristique est moins bonne que la précédente puisque pour m=3 le palier comporte une étape de plus.
+En effet, pour de tels graphes, il vaut mieux exécuter toutes les tâches d'une même niveau de dépendance plutôt que d'anticiper.
+
+Pour dag4 en revanche, on retrouve une exécution semblable à celle de la question 13 qui est optimale pour cette forme de DAG.
+On a en effet un palier à 12 étapes d'exécution dès r=2 pour m=3.
+
+
