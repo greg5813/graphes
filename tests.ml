@@ -1,13 +1,13 @@
-print_string "ordonnanceur avec heuristique";;
-
+print_endline "ordonnanceur avec heuristique";
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag1 r=";
 	print_int i;
 	print_string " t=";
 	print_int (List.length (ordonnanceur_sans_heuristique i dag1));
 	print_newline()
-done;;
-
+done;
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag2 r=";
 	print_int i;
@@ -15,7 +15,7 @@ for i=1 to 5 do
 	print_int (List.length (ordonnanceur_sans_heuristique i dag2));
 	print_newline()
 done;
-
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag3 r=";
 	print_int i;
@@ -23,7 +23,7 @@ for i=1 to 5 do
 	print_int (List.length (ordonnanceur_sans_heuristique i dag3));
 	print_newline()
 done;
-
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag4 r=";
 	print_int i;
@@ -31,18 +31,18 @@ for i=1 to 5 do
 	print_int (List.length (ordonnanceur_sans_heuristique i dag4));
 	print_newline()
 done;
-
-
-print_string "ordonnanceur avec heuristique";;
-
+print_newline();
+print_newline();
+print_endline "ordonnanceur avec heuristique";
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag1 r=";
 	print_int i;
 	print_string " t=";
 	print_int (List.length (ordonnanceur_avec_heuristique i dag1));
 	print_newline()
-done;;
-
+done;
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag2 r=";
 	print_int i;
@@ -50,7 +50,7 @@ for i=1 to 5 do
 	print_int (List.length (ordonnanceur_avec_heuristique i dag2));
 	print_newline()
 done;
-
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag3 r=";
 	print_int i;
@@ -58,7 +58,7 @@ for i=1 to 5 do
 	print_int (List.length (ordonnanceur_avec_heuristique i dag3));
 	print_newline()
 done;
-
+print_newline();
 for i=1 to 5 do 
 	print_string "  dag4 r=";
 	print_int i;
@@ -66,10 +66,10 @@ for i=1 to 5 do
 	print_int (List.length (ordonnanceur_avec_heuristique i dag4));
 	print_newline()
 done;
-
-
-print_string "ordonnanceur avec contrainte mémoire";;
-
+print_newline();
+print_newline();
+print_string "ordonnanceur avec contrainte mémoire";
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag1 m=";
@@ -81,8 +81,8 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
-
+done;
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag2 m=";
@@ -94,8 +94,8 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
-
+done;
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag3 m=";
@@ -107,8 +107,8 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
-
+done;
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag4 m=";
@@ -120,11 +120,11 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
-
-
-print_string "ordonnanceur avec contrainte mémoire bonus";;
-
+done;
+print_newline();
+print_newline();
+print_string "ordonnanceur avec contrainte mémoire bonus";
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag1 m=";
@@ -136,8 +136,8 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
-
+done;
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag2 m=";
@@ -149,8 +149,8 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
-
+done;
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag3 m=";
@@ -162,8 +162,8 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
-
+done;
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag4 m=";
@@ -175,5 +175,5 @@ for j=1 to 5 do
 		print_newline()
 	done;
 	print_newline()
-done;;
+done;
 
