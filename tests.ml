@@ -1,3 +1,5 @@
+print_newline();
+print_newline();
 print_endline "ordonnanceur sans heuristique";
 print_newline();
 for i=1 to 5 do 
@@ -70,6 +72,7 @@ print_newline();
 print_newline();
 print_string "ordonnanceur avec contrainte mémoire";
 print_newline();
+print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
 		print_string "  dag1 m=";
@@ -140,6 +143,7 @@ done;
 print_newline();
 print_newline();
 print_string "ordonnanceur avec contrainte mémoire bonus";
+print_newline();
 print_newline();
 for j=1 to 5 do
 	for i=1 to 5 do 
