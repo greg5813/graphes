@@ -1,325 +1,179 @@
 print_string "ordonnanceur avec heuristique";;
 
-print_string "dag1";;
-print_string "r=1";; let t = List.length (ordonnanceur_sans_heuristique 1 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_sans_heuristique 2 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_sans_heuristique 3 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_sans_heuristique 4 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_sans_heuristique 5 dag1);;
+for i=1 to 5 do 
+	print_string "  dag1 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_sans_heuristique i dag1));
+	print_newline()
+done;;
 
-print_string "dag2";;
-print_string "r=1";; let t = List.length (ordonnanceur_sans_heuristique 1 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_sans_heuristique 2 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_sans_heuristique 3 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_sans_heuristique 4 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_sans_heuristique 5 dag2);;
+for i=1 to 5 do 
+	print_string "  dag2 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_sans_heuristique i dag2));
+	print_newline()
+done;
 
-print_string "dag3";;
-print_string "r=1";; let t = List.length (ordonnanceur_sans_heuristique 1 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_sans_heuristique 2 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_sans_heuristique 3 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_sans_heuristique 4 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_sans_heuristique 5 dag3);;
+for i=1 to 5 do 
+	print_string "  dag3 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_sans_heuristique i dag3));
+	print_newline()
+done;
 
-print_string "dag4";;
-print_string "r=1";; let t = List.length (ordonnanceur_sans_heuristique 1 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_sans_heuristique 2 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_sans_heuristique 3 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_sans_heuristique 4 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_sans_heuristique 5 dag4);;
+for i=1 to 5 do 
+	print_string "  dag4 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_sans_heuristique i dag4));
+	print_newline()
+done;
 
 
 print_string "ordonnanceur avec heuristique";;
 
-print_string "dag1";;
-print_string "r=1";; let t = List.length (ordonnanceur_avec_heuristique 1 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_avec_heuristique 2 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_avec_heuristique 3 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_avec_heuristique 4 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_avec_heuristique 5 dag1);;
+for i=1 to 5 do 
+	print_string "  dag1 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_avec_heuristique i dag1));
+	print_newline()
+done;;
 
-print_string "dag2";;
-print_string "r=1";; let t = List.length (ordonnanceur_avec_heuristique 1 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_avec_heuristique 2 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_avec_heuristique 3 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_avec_heuristique 4 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_avec_heuristique 5 dag2);;
+for i=1 to 5 do 
+	print_string "  dag2 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_avec_heuristique i dag2));
+	print_newline()
+done;
 
-print_string "dag3";;
-print_string "r=1";; let t = List.length (ordonnanceur_avec_heuristique 1 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_avec_heuristique 2 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_avec_heuristique 3 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_avec_heuristique 4 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_avec_heuristique 5 dag3);;
+for i=1 to 5 do 
+	print_string "  dag3 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_avec_heuristique i dag3));
+	print_newline()
+done;
 
-print_string "dag4";;
-print_string "r=1";; let t = List.length (ordonnanceur_avec_heuristique 1 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_avec_heuristique 2 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_avec_heuristique 3 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_avec_heuristique 4 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_avec_heuristique 5 dag4);;
+for i=1 to 5 do 
+	print_string "  dag4 r=";
+	print_int i;
+	print_string " t=";
+	print_int (List.length (ordonnanceur_avec_heuristique i dag4));
+	print_newline()
+done;
 
 
 print_string "ordonnanceur avec contrainte mémoire";;
 
-print_string "dag1";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 1 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 1 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 1 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 1 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 1 dag1);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 2 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 2 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 2 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 2 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 2 dag1);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 3 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 3 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 3 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 3 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 3 dag1);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 4 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 4 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 4 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 4 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 4 dag1);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 5 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 5 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 5 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 5 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 5 dag1);;
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag1 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire i j dag1));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag2 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire i j dag2));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
-print_string "dag2";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 1 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 1 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 1 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 1 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 1 dag2);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 2 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 2 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 2 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 2 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 2 dag2);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 3 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 3 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 3 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 3 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 3 dag2);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 4 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 4 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 4 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 4 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 4 dag2);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 5 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 5 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 5 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 5 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 5 dag2);;
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag3 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire i j dag3));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
-print_string "dag3";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 1 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 1 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 1 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 1 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 1 dag3);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 2 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 2 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 2 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 2 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 2 dag3);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 3 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 3 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 3 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 3 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 3 dag3);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 4 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 4 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 4 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 4 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 4 dag3);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 5 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 5 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 5 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 5 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 5 dag3);;
-
-print_string "dag4";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 1 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 1 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 1 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 1 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 1 dag4);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 2 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 2 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 2 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 2 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 2 dag4);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 3 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 3 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 3 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 3 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 3 dag4);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 4 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 4 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 4 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 4 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 4 dag4);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire 1 5 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire 2 5 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire 3 5 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire 4 5 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire 5 5 dag4);;
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag4 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire i j dag4));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
 
 print_string "ordonnanceur avec contrainte mémoire bonus";;
 
-print_string "dag1";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 1 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 1 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 1 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 1 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 1 dag1);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 2 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 2 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 2 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 2 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 2 dag1);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 3 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 3 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 3 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 3 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 3 dag1);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 4 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 4 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 4 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 4 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 4 dag1);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 5 dag1);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 5 dag1);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 5 dag1);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 5 dag1);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 5 dag1);;
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag1 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag1));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag2 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag2));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
-print_string "dag2";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 1 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 1 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 1 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 1 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 1 dag2);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 2 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 2 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 2 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 2 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 2 dag2);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 3 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 3 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 3 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 3 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 3 dag2);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 4 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 4 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 4 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 4 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 4 dag2);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 5 dag2);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 5 dag2);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 5 dag2);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 5 dag2);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 5 dag2);;
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag3 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag3));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
-print_string "dag3";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 1 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 1 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 1 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 1 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 1 dag3);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 2 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 2 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 2 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 2 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 2 dag3);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 3 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 3 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 3 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 3 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 3 dag3);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 4 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 4 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 4 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 4 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 4 dag3);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 5 dag3);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 5 dag3);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 5 dag3);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 5 dag3);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 5 dag3);;
-
-print_string "dag4";;
-print_string "m=1";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 1 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 1 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 1 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 1 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 1 dag4);;
-print_string "m=2";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 2 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 2 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 2 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 2 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 2 dag4);;
-print_string "m=3";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 3 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 3 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 3 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 3 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 3 dag4);;
-print_string "m=4";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 4 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 4 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 4 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 4 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 4 dag4);;
-print_string "m=5";;
-print_string "r=1";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 1 5 dag4);;
-print_string "r=2";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 2 5 dag4);;
-print_string "r=3";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 3 5 dag4);;
-print_string "r=4";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 4 5 dag4);;
-print_string "r=5";; let t = List.length (ordonnanceur_contrainte_memoire_bonus 5 5 dag4);;
+for j=1 to 5 do
+	for i=1 to 5 do 
+		print_string "  dag4 m=";
+		print_int j;
+		print_string " r=";
+		print_int i;
+		print_string " t=";
+		print_int (List.length (ordonnanceur_contrainte_memoire_bonus i j dag4));
+		print_newline()
+	done;
+	print_newline()
+done;;
 
