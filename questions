@@ -26,7 +26,7 @@ Sous ces hypothèses, chaque partie correspond à une composante connexe du grap
 c.
 On découpe récursivement l'arbre de la manière suivante, on crée deux parties, une correspondant au sous-arbre gauche et l'autre à la racine et au sous-arbre droit.
 On effectue donc cela sqrt(r) fois pour former les r parties. Remarque, il faut que sqrt(r)<p.
-On obtient ainsi (r-1) communications, ce qui est la borne inf pour r parties.
+On obtient ainsi (r-1) communications (entre la racine et le sous-arbre gauche de chaque noeud divisé), ce qui est la borne inf pour r parties dans un graphe connexe.
 
 Q3
 a.
@@ -36,7 +36,11 @@ b.
 Si l'on sauvegarde les résultats de chaque tâche après exécution, il suffit de réexécuter la tâche ayant fauté. On obtient donc une moyenne de 1.
 
 c.
-(A REVOIR) (n s) (n -s)m
+La complexité de l'algortihme de force brute est égale au nombre de possibilités d'ensembles de tâches sauvegardées différents fois le coût de calcul de mu.
+On sauvegarde le résutat de s tâches parmis n, on a donc s parmis n ensembles différents possibles.
+mu est la moyenne du nombre de tâches à réexécuter, sachant que l'on doit réexécuter les tâches précédentes les (n-s) tâches non sauvegardées.
+La complexité de la recherche des tâches précédentes est en O(m).
+L'algorithme de force brute est donc de complexité O((s parmis n)*(n-s)*m).
 
 d.
 (BONUS)
@@ -139,10 +143,14 @@ Il en resulte encore un grand nombre d'étapes alors que les taches issues de g 
 Q16
 a.
 b.
+La priorité P1 implique que l'on exécute d'abord les tâches a1 à an-2, puis c, puis an-1 b1, puis b2 b3 b4 à bn-4 bn-2 bn-1, puis bn et enfin d.
+On obtiens donc un temps d'exécution pour r=2 et m=3 égale à T = N+2+[(N-1)/3].
 
+Soit la priorité P2 qui implique l'exécution suivante: a1, puis c, a2 b1 à an bn-1, puis bn et enfin d.
+On obtiens alors un temps d'exécution de N+3 qui est donc meilleur que celui de P1 pour N>4.
 
-c. (BONUS)
-Une heuristique plus adaptée consiste donc à trier les tâches à exécuter selon le nombre de tâches qui dépendent de son exécution (sous-graphe) et non pas le plus long chemin jusqu'à un puit.
+c.
+En s'inspirant de la priorité P2, on déduit qu'une heuristique plus adaptée consiste à trier les tâches à exécuter selon le nombre de tâches qui dépendent de son exécution (sous-graphe) et non pas la longeur des chemins jusqu'à un puit.
 
 Q17
 (BONUS) algo + (QUESTIONS)
