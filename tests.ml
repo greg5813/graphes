@@ -1,7 +1,7 @@
-print_endline "ordonnanceur sans heuristique";;
+print_endline "ordonnanceur sans heuristique";
 
-print_endline "	dag1";;
-print_string "	  r=1";; let t = List.length (ordonnanceur_sans_heuristique 1 dag1);;
+print_endline "	dag1";
+print_string "	  r=1"; let t = List.length (ordonnanceur_sans_heuristique 1 dag1);;
 print_string "	  r=2";; let t = List.length (ordonnanceur_sans_heuristique 2 dag1);;
 print_string "	  r=3";; let t = List.length (ordonnanceur_sans_heuristique 3 dag1);;
 print_string "	  r=4";; let t = List.length (ordonnanceur_sans_heuristique 4 dag1);;
