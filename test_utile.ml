@@ -98,12 +98,12 @@ marquage dag4;;
 print_marquage dag4;;
 
 (*tests de la fonction marquage_bonus *)
-marquage dag1;;
+marquage_bonus dag1;;
 print_marquage dag1;;
-marquage dag2;;
+marquage_bonus dag2;;
 print_marquage dag2;;
-marquage dag3;;
+marquage_bonus dag3;;
 print_marquage dag3;;
-marquage dag4;;
+marquage_bonus dag4;;
 print_marquage dag4;;
 
